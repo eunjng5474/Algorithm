@@ -1,31 +1,34 @@
 import sys
 
-n = int(input())
+N = int(input())
 stack = []
 
-for i in range(n):
-    s = sys.stdin.readline().split()
+for n in range(N):
+    string = list(sys.stdin.readline().split())
+    # print(string)
 
-    if s[0] == 'push' :
-        stack.append(s[1])
-
-    elif s[0] == 'pop':
-        if not stack:
+    if string[0] == 'push':
+        stack.append(int(string[1]))
+    
+    elif string[0] == 'pop':
+        try:
+            result = stack.pop()
+            print(result)
+        except:
             print(-1)
-        else:
-            print(stack.pop())
-
-    elif s[0] == 'size':
+    
+    elif string[0] == 'size':
         print(len(stack))
     
-    elif s[0] == 'empty':
+    elif string[0] == 'empty':
         if stack:
-            print(0)
+            result = 0
         else:
-            print(1)
+            result = 1
+        print(result)
     
-    elif s[0] == 'top':
-        if not stack:
-            print(-1)
-        else:
+    elif string[0] == 'top':
+        if stack:
             print(stack[-1])
+        else:
+            print(-1)
