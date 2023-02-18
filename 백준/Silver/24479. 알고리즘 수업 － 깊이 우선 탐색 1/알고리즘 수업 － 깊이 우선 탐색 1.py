@@ -1,27 +1,28 @@
 import sys
-sys.setrecursionlimit(10**5)
+sys.setrecursionlimit(10**6)
 
-def DFS(start):
+def DFS_R(start):
     global cnt
+    cnt += 1
     visited[start] = cnt
     for i in arr[start]:
         if visited[i] == 0:
-            cnt += 1
-            DFS(i) 
+            visited[i] = cnt
+            DFS_R(i)
 
 N, M, R = map(int, input().split())
-visited = [0] * (N+1)
-arr = [[] for _ in range(N+1)]
-cnt = 1
+arr = [[] * (N+1) for _ in range(N+1)]
+visited = [0] * (N+1) 
+cnt = 0
 
 for m in range(M):
-    u, v = map(int, input().split())
+    u, v = map(int, sys.stdin.readline().rstrip().split())
     arr[u].append(v)
     arr[v].append(u)
 
-for i in range(N+1):
+for i in range(len(arr)):
     arr[i].sort()
 
-DFS(R)
-for j in range(1, N+1):
-    print(visited[j])
+DFS_R(R)
+for i in visited[1:]:
+    print(i)
