@@ -6,7 +6,7 @@ dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
 
 def bfs(x, y):
-    global shark, cnt, time
+    global shark
     q = deque()
     q.append((x, y))
     visited[x][y] = 1
@@ -37,16 +37,11 @@ shark = 2
 cnt = 0
 time = 0
 
-fish = 0
-flag = False
 for i in range(N):
     for j in range(N):
         if arr[i][j] == 9:
             x, y = i, j
             arr[i][j] = 0
-        if arr[i][j] and arr[i][j] != 9:
-            fish += 1
-
 
 while True:
     visited = [[0] * N for _ in range(N)]
@@ -57,7 +52,6 @@ while True:
 
     dist, x, y = lst[0]
     cnt += 1
-    # shark += 1
     time += dist
 
     if shark == cnt:
