@@ -1,19 +1,21 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int n = Integer.parseInt(br.readLine());
+		int k = n / 4;
+		StringBuilder sb = new StringBuilder();
 		
-		int N = sc.nextInt();
-		int l = N / 4;
-		
-		for(int i=0; i<l; i++) {
-			System.out.print("long ");
+		for(int i=0; i<k; i++) {
+			sb.append("long ");
 		}
+		sb.append("int");
 		
-		System.out.print("int");
+		System.out.println(sb);
 	}
 
 }
