@@ -1,10 +1,10 @@
-a_li = []
-b_dic = {}
-for i in range(10):
-    a_li.append(int(input()))
-for j in a_li:
-    try:
-        b_dic[j % 42] += 1
-    except:
-        b_dic[j % 42] = 1
-print(len(b_dic))
+import sys
+input = sys.stdin.readline
+
+lst = []
+for n in range(10):
+  num = int(input())
+  if (num % 42) not in lst:
+    lst.append(num % 42)
+
+print(len(lst))
