@@ -1,32 +1,30 @@
-import java.util.Arrays;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
 
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
 		
-		int N = sc.nextInt();
-		int M = sc.nextInt();
+		int n = Integer.parseInt(st.nextToken());
+		int m = Integer.parseInt(st.nextToken());
+		int arr[] =new int[n];
 		
-		int arr[] = new int[N];
-		for(int i=0; i<N; i++) {
-			arr[i] = 0;
-		}
-		
-		
-		for(int n=0; n<M; n++) {
-			int i = sc.nextInt();
-			int j = sc.nextInt();
-			int k = sc.nextInt();
+		for(int p=0; p<m; p++) {
+			st = new StringTokenizer(br.readLine());
+			int i = Integer.parseInt(st.nextToken());
+			int j = Integer.parseInt(st.nextToken());
+			int k = Integer.parseInt(st.nextToken());
 			
-			for(int m=i-1; m<j; m++) {
-				arr[m] = k;
+			for(int q=i-1; q<j; q++) {
+				arr[q] = k;
 			}
 		}
-		
-		for(int num: arr) {
-			System.out.print(num+" ");
+		for(int num : arr) {
+			System.out.print(num + " ");
 		}
 	}
 
