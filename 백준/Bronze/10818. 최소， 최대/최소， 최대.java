@@ -1,22 +1,25 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class Main {
-
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+	//////// sol 2
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
+		int n = Integer.parseInt(br.readLine());
+		int[] lst = new int[n];
+		int idx = 0;
 		
-		int N = sc.nextInt();
-		int[] lst = new int[N];
-		
-		for(int i = 0; i < N; i++) {
-			lst[i] = sc.nextInt();
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		while(st.hasMoreTokens()) {
+			lst[idx] = Integer.parseInt(st.nextToken());
+			idx++;
 		}
-		
-		Arrays.sort(lst);  // 정렬 
-		System.out.println(lst[0]+" "+lst[N-1]);
-		
-
+		Arrays.sort(lst);
+		System.out.println(lst[0] + " " + lst[n-1]);
 	}
 
 }
