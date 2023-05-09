@@ -10,20 +10,11 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		String a = st.nextToken();
 		String b = st.nextToken();
-
-		int changeA = 0;
-		int changeB = 0;
 		
-		for(int i=0; i<3; i++) {
-			changeA += ((a.charAt(i) - 48) * (int) Math.pow(10, i));
-			changeB += ((b.charAt(i) - 48) * (int) Math.pow(10, i));
-		}
+		int changeA = Integer.parseInt(new StringBuilder(a).reverse().toString());
+		int changeB = Integer.parseInt(new StringBuilder(b).reverse().toString());
 		
-		if(changeA > changeB) {
-			System.out.println(changeA);
-		} else {
-			System.out.println(changeB);
-		}
+		System.out.print(changeA > changeB ? changeA : changeB);
 	}
 
 }
