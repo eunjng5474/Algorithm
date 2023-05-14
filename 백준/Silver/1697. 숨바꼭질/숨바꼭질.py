@@ -15,14 +15,9 @@ def bfs(x):
         x = q.popleft()
         if x == K:
             return visited[x] - 1
-        if x+1 <= 100000 and not visited[x+1]:
-            visited[x+1] = visited[x] + 1
-            q.append(x+1)
-        if x - 1 >= 0 and not visited[x-1]:
-            visited[x-1] = visited[x] + 1
-            q.append(x-1)
-        if x*2 <= 100000 and not visited[x*2]:
-            visited[x*2] = visited[x] + 1
-            q.append(x*2)
 
+        for i in [x+1, x-1, x*2]:
+            if 0 <= i <= 100000 and not visited[i]:
+                visited[i] = visited[x] + 1
+                q.append(i)
 print(bfs(N))
