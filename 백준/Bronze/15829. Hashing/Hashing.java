@@ -7,16 +7,16 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
-		int L = Integer.parseInt(br.readLine());
+		int l = Integer.parseInt(br.readLine());
 		String str = br.readLine();
-		long result = 0;
-		long r = 1;
-		for(int i=0; i<L; i++) {
-			result += (str.charAt(i) - 96)*r;
-			r = (r*31) % 1234567891;
+		
+		BigInteger num = new BigInteger("0");
+		for(int i=0; i<l; i++) {
+			BigInteger tmp = BigInteger.valueOf(str.charAt(i) - 96).multiply(BigInteger.valueOf(31).pow(i));
+			num = num.add(tmp);
 		}
-		System.out.println(result % 1234567891);
+		System.out.println(num.remainder(BigInteger.valueOf(1234567891)));
+
 	}
 
 }
