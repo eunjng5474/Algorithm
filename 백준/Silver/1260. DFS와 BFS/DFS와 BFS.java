@@ -1,13 +1,11 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
     static int n, m, v;
-    static int[][] graph;
+    static ArrayList<Integer> graph[];
     static boolean[] visited;
     static StringBuilder sb = new StringBuilder();
 
@@ -20,14 +18,21 @@ public class Main {
         m = Integer.parseInt(st.nextToken());
         v = Integer.parseInt(st.nextToken());
 
-        graph = new int[n + 1][n + 1];
+        graph = new ArrayList[n+1];
+        for (int i = 0; i <= n; i++) {
+            graph[i] = new ArrayList<>();
+        }
 
         for (int i = 0; i < m; i++) {
             st = new StringTokenizer(br.readLine());
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
-            graph[a][b] = 1;
-            graph[b][a] = 1;
+            graph[a].add(b);
+            graph[b].add(a);
+        }
+
+        for (int i = 0; i <= n; i++) {
+            Collections.sort(graph[i]);
         }
 
         visited = new boolean[n + 1];
@@ -43,8 +48,8 @@ public class Main {
         visited[now] = true;
         sb.append(now).append(" ");
 
-        for (int i = 0; i <= n; i++) {
-            if(graph[now][i] == 1 && !visited[i]) dfs(i);
+        for (int next : graph[now]) {
+            if(!visited[next]) dfs(next);
         }
     }
 
@@ -57,10 +62,10 @@ public class Main {
             now = q.poll();
             sb.append(now).append(" ");
 
-            for (int i = 0; i <= n; i++) {
-                if (graph[now][i] == 1 && !visited[i]) {
-                    visited[i] = true;
-                    q.add(i);
+            for (int next : graph[now]) {
+                if (!visited[next]) {
+                    visited[next] = true;
+                    q.add(next);
                 }
             }
         }
