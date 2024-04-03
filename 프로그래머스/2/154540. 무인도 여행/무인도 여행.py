@@ -41,5 +41,5 @@ def solution(maps):
         answer = [-1]
     else:
         answer.sort()
-    
+        
     return answer
